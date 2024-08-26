@@ -8,6 +8,13 @@ Paddle.Setup({
     }
 });
 
+Paddle.Initialize({
+    token: 'live_7d279f61a3499fed520f7cd8c08' // replace with a client-side token
+});
+
+Paddle.Checkout.open();
+
+
 Paddle.Environment.set('sandbox');
 
 document.getElementById('buyButton').addEventListener('click', function() {
@@ -35,3 +42,26 @@ Paddle.Product.Price('gross', YOUR_PRODUCT_ID, 1, function(pricing) {
 Paddle.User.History('customer@example.com', YOUR_PRODUCT_ID, function(history) {
     console.log('User Purchase History:', history);
 });
+
+var request = {
+    items: [{
+        quantity: 1,
+        priceId: 'pri_01gsz8ntc6z7npqqp6j4ys0w1w',
+    },
+        {
+            quantity: 1,
+            priceId: 'pri_01gsz8x8sawmvhz1pv30nge1ke',
+        }
+    ],
+    address: {
+        countryCode: 'US'
+    }
+}
+
+Paddle.PricePreview(request)
+    .then((result) => {
+        console.log(result);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
