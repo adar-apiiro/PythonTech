@@ -1,11 +1,13 @@
 import { Environment, Paddle } from '@paddle/paddle-node-sdk'
+ 
+function general() {
+  const paddle = new Paddle('API_KEY') 
 
-const paddle = new Paddle('API_KEY') 
-
-const paddle = new Paddle('API_KEY', {
-  environment: Environment.production, // or Environment.sandbox for accessing sandbox API
-  logLevel: 'verbose' // or 'error' for less verbose logging
-})
+  const paddle = new Paddle('API_KEY', {
+    environment: Environment.production, // or Environment.sandbox for accessing sandbox API
+    logLevel: 'verbose' // or 'error' for less verbose logging
+  })
+}
 
 function getProducts() {
     // creates an iterator instance
